@@ -1,0 +1,40 @@
+---
+import Header from "../components/header.astro";
+import Navigation from "../components/navigation.astro";
+import Sidebar from "../components/sidebar.astro";
+import "../styles/globals.css";
+import "@fontsource/roboto";
+---
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<title>WiLink Solutions</title>
+
+<body>
+  <Navigation />
+  <Header />
+  <main>
+    <div class="main-content">
+      <slot />
+    </div>
+    <Sidebar />
+  </main>
+  <style lang="scss">
+    body {
+      background-color: var(--body-background);
+    }
+    main {
+      max-width: var(--max-width-container);
+      width: 100%;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      grid-template-rows: 1fr;
+      gap: 20px;
+
+      > .main-content {
+      }
+    }
+  </style>
+</body>
