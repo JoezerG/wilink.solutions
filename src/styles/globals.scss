@@ -34,6 +34,10 @@ h1 {
 h2 {
   font-size: 32px;
   font-weight: 700;
+  &.primary {
+    font-size: 45px;
+    font-weight: 900;
+  }
 }
 
 a.button {
