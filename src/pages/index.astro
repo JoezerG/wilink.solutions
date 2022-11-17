@@ -3,6 +3,16 @@ import RootLayout from "../layouts/rootLayout.astro";
 const posts = await Astro.glob("../pages/**/*.md");
 ---
 
+<style lang="scss">
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+      text-decoration-color: var(--primary-color);
+    }
+  }
+</style>
+
 <RootLayout>
   <div class="section-title line">
     <h2 class="secondary">Últimas entradas</h2>
@@ -12,11 +22,13 @@ const posts = await Astro.glob("../pages/**/*.md");
       posts.map(({ url, frontmatter: { title } }) => {
         const type = url.includes("solutions") ? "Solucion" : "Articulo";
         return (
-          <div>
-            <h2 class="primary">
-              {title} {type}
-            </h2>
-          </div>
+          <a href={url}>
+            <div>
+              <h2 class="primary">
+                {title} {type}
+              </h2>
+            </div>
+          </a>
         );
       })
     }
