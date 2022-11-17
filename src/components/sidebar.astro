@@ -1,0 +1,22 @@
+---
+const categories = Array(5).fill("name");
+---
+
+<style lang="scss">
+  aside {
+    position: sticky;
+    .categories {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+</style>
+
+<aside>
+  <h2 class="secondary">Categorías</h2>
+  <div class="categories">
+    {categories.map((link) => <a class="button outlined">{link}</a>)}
+  </div>
+</aside>
