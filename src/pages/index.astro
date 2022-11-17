@@ -1,15 +1,24 @@
 ---
+import RootLayout from "../layouts/rootLayout.astro";
+const posts = await Astro.glob("../pages/**/*.md");
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<RootLayout>
+  <div class="section-title line">
+    <h2 class="secondary">Últimas entradas</h2>
+  </div>
+  <section>
+    {
+      posts.map(({ url, frontmatter: { title } }) => {
+        const type = url.includes("solutions") ? "Solucion" : "Articulo";
+        return (
+          <div>
+            <h2 class="primary">
+              {title} {type}
+            </h2>
+          </div>
+        );
+      })
+    }
+  </section>
+</RootLayout>
