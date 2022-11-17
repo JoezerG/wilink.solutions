@@ -11,6 +11,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.13",
+    "@fontsource/roboto": "^4.5.8",
     "astro": "^1.6.0"
+  },
+  "devDependencies": {
+    "sass": "^1.56.0"
   }
 }
