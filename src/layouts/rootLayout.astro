@@ -1,7 +1,5 @@
 ---
-import Header from "../components/header.astro";
 import Navigation from "../components/navigation.astro";
-import Sidebar from "../components/sidebar.astro";
 import "../styles/globals.scss";
 import "@fontsource/roboto";
 ---
@@ -12,19 +10,7 @@ import "@fontsource/roboto";
 <title>WiLink Solutions</title>
 
 <body>
-  <Navigation />
-  <Header />
-  <main>
-    <div class="main-content">
-      <slot />
-    </div>
-    <Sidebar />
-  </main>
-  <footer>
-    <div>aqui va el footer</div>
-  </footer>
-
-  <style lang="scss">
+  <style lang="scss" is:global>
     body {
       background-color: var(--body-background);
     }
@@ -36,13 +22,22 @@ import "@fontsource/roboto";
       grid-template-columns: 1fr 220px;
       grid-template-rows: 1fr;
       gap: 250px;
-
-      > .main-content {
+    }
+    footer {
+      color: white;
+      > div {
+        max-width: var(--max-width-container);
+        width: 100%;
+        margin: 0 auto;
+        height: 70px;
+        display: flex;
+        align-items: center;
       }
     }
-
-    footer {
-      padding: 3rem;
-    }
   </style>
+  <Navigation />
+  <slot />
+  <footer>
+    <div>aqui va el footer</div>
+  </footer>
 </body>

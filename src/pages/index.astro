@@ -1,5 +1,5 @@
 ---
-import RootLayout from "../layouts/rootLayout.astro";
+import HomeLayout from "../layouts/homeLayout.astro";
 import { sortPostByDate, formatDate } from "../utils/commons";
 import type { PostMetada } from "../utils/interfaces";
 const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
@@ -31,7 +31,7 @@ const postsSorted = posts.sort(sortPostByDate);
   }
 </style>
 
-<RootLayout>
+<HomeLayout>
   <div class="section-title line">
     <h2 class="secondary">Últimas entradas</h2>
   </div>
@@ -53,4 +53,4 @@ const postsSorted = posts.sort(sortPostByDate);
       })
     }
   </section>
-</RootLayout>
+</HomeLayout>

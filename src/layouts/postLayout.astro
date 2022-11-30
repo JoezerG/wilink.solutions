@@ -1,6 +1,7 @@
 ---
 import RootLayout from "./rootLayout.astro";
 import type { MarkdownLayoutProps } from "astro";
+import Sidebar from "../components/sidebar.astro";
 type Props = MarkdownLayoutProps<{
   title: string;
   author: string;
@@ -10,7 +11,36 @@ type Props = MarkdownLayoutProps<{
 const { frontmatter } = Astro.props;
 ---
 
+<style lang="scss">
+  p {
+    color: white;
+  }
+
+  header {
+    max-width: var(--max-width-container);
+    width: 100%;
+    margin: 0 auto;
+    .header {
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      h1 {
+        color: var(--primary-color);
+      }
+    }
+  }
+</style>
+
 <RootLayout>
-  <h1>{frontmatter.title}</h1>
-  <slot />
+  <header>
+    <div class="header">
+      <h1>{frontmatter.title}</h1>
+    </div>
+  </header>
+  <main>
+    <div>
+      <slot />
+    </div>
+    <Sidebar />
+  </main>
 </RootLayout>
