@@ -1,6 +1,6 @@
 ---
 title: Titulo de la primera solucion que se publica
-data: 2022-11-01
+date: "2022-11-01"
 author: Joezerg <joezergullo@gmail.com>
 layout: ../../layouts/postLayout.astro
 ---
