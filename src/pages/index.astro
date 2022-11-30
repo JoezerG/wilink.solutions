@@ -1,6 +1,9 @@
 ---
 import RootLayout from "../layouts/rootLayout.astro";
-const posts = await Astro.glob("../pages/**/*.md");
+import { sortPostByDate, formatDate } from "../utils/commons";
+import type { PostMetada } from "../utils/interfaces";
+const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
+const postsSorted = posts.sort(sortPostByDate);
 ---
 
 <style lang="scss">
@@ -9,6 +12,21 @@ const posts = await Astro.glob("../pages/**/*.md");
     &:hover {
       text-decoration: underline;
       text-decoration-color: var(--primary-color);
+    }
+    small {
+      font-size: 1.8rem;
+      color: white;
+      display: block;
+    }
+
+    .tags {
+      margin-top: 20px;
+      span {
+        padding: 0.3rem 0.8rem;
+        background-color: var(--primary-color);
+        border-radius: 4px;
+        color: white;
+      }
     }
   }
 </style>
@@ -19,14 +37,16 @@ const posts = await Astro.glob("../pages/**/*.md");
   </div>
   <section>
     {
-      posts.map(({ url, frontmatter: { title } }) => {
+      postsSorted.map(({ url, frontmatter: { title, date } }) => {
         const type = url.includes("solutions") ? "Solucion" : "Articulo";
         return (
           <a href={url}>
             <div>
-              <h2 class="primary">
-                {title} {type}
-              </h2>
+              <h2 class="primary">{title}</h2>
+            </div>
+            <small>{formatDate(date)}</small>
+            <div class="tags">
+              <span>{type}</span>
             </div>
           </a>
         );
