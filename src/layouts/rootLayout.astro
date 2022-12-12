@@ -19,25 +19,36 @@ import "@fontsource/roboto";
       width: 100%;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 220px;
+      grid-template-columns: 720px 1fr;
       grid-template-rows: 1fr;
-      gap: 250px;
+      gap: 210px;
     }
     footer {
       color: white;
+      margin-top: 4rem;
       > div {
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
         max-width: var(--max-width-container);
         width: 100%;
         margin: 0 auto;
         height: 70px;
         display: flex;
         align-items: center;
+        justify-content: space-between;
+        a {
+          color: var(--primary-color);
+        }
       }
     }
   </style>
   <Navigation />
   <slot />
   <footer>
-    <div>aqui va el footer</div>
+    <div>
+      <p>WiLink Solutions 2022</p>
+      <p>
+        made by <a target="_blank" href="https://joezerg.dev">joezerg.dev</a>
+      </p>
+    </div>
   </footer>
 </body>

@@ -1,46 +1,199 @@
 ---
+import arrowBack from "../images/arrow_back.svg";
 import RootLayout from "./rootLayout.astro";
 import type { MarkdownLayoutProps } from "astro";
 import Sidebar from "../components/sidebar.astro";
+import { formatDate } from "../utils/commons";
 type Props = MarkdownLayoutProps<{
   title: string;
   author: string;
   date: string;
   cover: string;
 }>;
-const { frontmatter } = Astro.props;
+const props = Astro.props.frontmatter || Astro.props;
+
+const [authorName, authorEmail, authorTag] = props.author.split("|");
+const coverImageUrl = `/images${props.url}/cover_image_scaled.png`;
 ---
 
 <style lang="scss">
-  p {
-    color: white;
-  }
-
   header {
     max-width: var(--max-width-container);
     width: 100%;
     margin: 0 auto;
     .header {
-      min-height: 320px;
+      width: 100%;
+      max-width: 720px;
+      position: relative;
+      min-height: 400px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-items: center;
+      justify-content: center;
+      z-index: 2;
+
+      .back-button {
+        display: block;
+        width: 44px;
+        height: 44px;
+        background-color: rgba(135, 86, 238, 0.59);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
       h1 {
         color: var(--primary-color);
+        font-size: 45px;
+        font-weight: 900;
       }
+
+      .metadata {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .author {
+          display: flex;
+          gap: 10px;
+          .avatar {
+            > span {
+              display: block;
+              width: 37px;
+              height: 37px;
+              background-color: #a3ff8c;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              text-transform: uppercase;
+              border-radius: 3px;
+            }
+          }
+          .text {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            span {
+              font-size: 0.8rem;
+            }
+            a {
+              color: white;
+              text-decoration: none;
+              font-weight: 900;
+            }
+          }
+        }
+
+        .date {
+          color: white;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    #post-header-image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      height: 70%;
+      width: 100%;
+      overflow: hidden;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(rgba(23, 22, 29, 0.6), rgba(23, 22, 29, 1));
+      }
+
+      > img {
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+      }
+    }
+  }
+  main {
+    position: relative;
+    z-index: 4;
+
+    .header_image {
+      margin-bottom: 5rem;
+      position: relative;
+
+      &::after {
+        content: "Imagen generada por Stable Difusion";
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        text-shadow: 2px 2px 2px rgba(23, 22, 29, 0.6);
+        color: rgba(255, 255, 255, 0.7);
+      }
+      img {
+        display: block;
+        width: 100%;
+        border-radius: 12px;
+        border: 2px var(--primary-color) solid;
+        box-sizing: border-box;
+      }
+    }
+
+    .body-post {
     }
   }
 </style>
 
 <RootLayout>
   <header>
+    <div id="post-header-image">
+      <img src={coverImageUrl} />
+    </div>
     <div class="header">
-      <h1>{frontmatter.title}</h1>
+      <a id="back-button" class="back-button"><img src={arrowBack} /></a>
+      <h1>{props.title}</h1>
+      <div class="metadata">
+        <div class="author">
+          <div class="avatar">
+            <span>
+              {authorName[0]}
+            </span>
+          </div>
+          <div class="text">
+            <a href={`mailto:${authorEmail}`}>{authorName}</a>
+            <span>{authorTag}</span>
+          </div>
+        </div>
+        <div class="date">
+          Publicado el
+          {formatDate(props.date)}
+        </div>
+      </div>
     </div>
   </header>
   <main>
     <div>
-      <slot />
+      <div class="header_image">
+        <img
+          src={coverImageUrl}
+          alt={`${props.title}. Imagen generada por Stable Difusion`}
+        />
+      </div>
+      <div class="body-post">
+        <slot />
+      </div>
     </div>
     <Sidebar />
   </main>
 </RootLayout>
+
+<script onload>
+  const backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", function () {
+    history.go(-1);
+  });
+</script>

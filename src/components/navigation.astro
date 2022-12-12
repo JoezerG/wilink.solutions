@@ -4,15 +4,18 @@ import logo from "../images/logo.svg";
 
 <style lang="scss">
   nav {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     display: flex;
     height: 77px;
     align-items: center;
     background-color: var(--navbar-background);
+    backdrop-filter: blur(10px);
     align-items: center;
     justify-content: center;
     gap: 30px;
+    z-index: 10;
   }
 
   img.logo {

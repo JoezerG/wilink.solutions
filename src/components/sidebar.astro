@@ -1,5 +1,14 @@
 ---
-const categories = Array(5).fill("name");
+import { PostMetada } from "../utils/interfaces";
+
+function filterCategories(category: string, index: number, self: string[]) {
+  return self.indexOf(category) === index;
+}
+
+const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
+const categories = posts
+  .map((p) => p.frontmatter.tags)
+  .filter(filterCategories);
 ---
 
 <style lang="scss">
