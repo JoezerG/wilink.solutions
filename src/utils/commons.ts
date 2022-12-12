@@ -20,6 +20,9 @@ export const sortPostByDate = (
 
 export const formatDate = (date: string) => {
   return DateTime.fromFormat(date, "yyyy-MM-dd").toLocaleString(
-    DateTime.DATE_MED_WITH_WEEKDAY
+    DateTime.DATE_MED_WITH_WEEKDAY,
+    {
+      locale: "es",
+    }
   );
 };
