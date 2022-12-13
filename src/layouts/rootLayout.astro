@@ -4,51 +4,56 @@ import "../styles/globals.scss";
 import "@fontsource/roboto";
 ---
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="generator" content={Astro.generator} />
-<title>WiLink Solutions</title>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>WiLink Solutions</title>
+  </head>
 
-<body>
-  <style lang="scss" is:global>
-    body {
-      background-color: var(--body-background);
-    }
-    main {
-      max-width: var(--max-width-container);
-      width: 100%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 720px 1fr;
-      grid-template-rows: 1fr;
-      gap: 210px;
-    }
-    footer {
-      color: white;
-      margin-top: 4rem;
-      > div {
-        border-top: 1px solid rgba(255, 255, 255, 0.3);
+  <body>
+    <style lang="scss" is:global>
+      body {
+        background-color: var(--body-background);
+      }
+      main {
         max-width: var(--max-width-container);
         width: 100%;
         margin: 0 auto;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        a {
-          color: var(--primary-color);
+        display: grid;
+        grid-template-columns: 720px 1fr;
+        grid-template-rows: 1fr;
+        gap: 210px;
+      }
+      footer {
+        color: white;
+        margin-top: 4rem;
+        > div {
+          border-top: 1px solid rgba(255, 255, 255, 0.3);
+          max-width: var(--max-width-container);
+          width: 100%;
+          margin: 0 auto;
+          height: 70px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          a {
+            color: var(--primary-color);
+          }
         }
       }
-    }
-  </style>
-  <Navigation />
-  <slot />
-  <footer>
-    <div>
-      <p>WiLink Solutions 2022</p>
-      <p>
-        made by <a target="_blank" href="https://joezerg.dev">joezerg.dev</a>
-      </p>
-    </div>
-  </footer>
-</body>
+    </style>
+    <Navigation />
+    <slot />
+    <footer>
+      <div>
+        <p>WiLink Solutions 2022</p>
+        <p>
+          made by <a target="_blank" href="https://joezerg.dev">joezerg.dev</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
