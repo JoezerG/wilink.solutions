@@ -1,4 +1,9 @@
 ---
+import arrowBack from "../images/arrow_back.svg";
+import { formatDate } from "../utils/commons";
+let { data } = Astro.props;
+const [authorName, authorEmail, authorTag] = data.author.split("|");
+const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
 ---
 
 <style lang="scss">
@@ -6,22 +11,135 @@
     max-width: var(--max-width-container);
     width: 100%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1.5fr 2fr;
-    grid-template-rows: 1fr;
-    min-height: 70vh;
-
-    > div {
+    .header {
+      width: 100%;
+      max-width: 720px;
+      position: relative;
+      min-height: 400px;
       display: flex;
       flex-direction: column;
+      justify-items: center;
       justify-content: center;
-      align-items: flex-start;
+      z-index: 2;
+
+      .back-button {
+        display: block;
+        width: 44px;
+        height: 44px;
+        background-color: rgba(135, 86, 238, 0.59);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 45px;
+        font-weight: 900;
+      }
+
+      .metadata {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .author {
+          display: flex;
+          gap: 10px;
+          .avatar {
+            > span {
+              display: block;
+              width: 37px;
+              height: 37px;
+              background-color: #a3ff8c;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-weight: bold;
+              text-transform: uppercase;
+              border-radius: 3px;
+            }
+          }
+          .text {
+            display: flex;
+            flex-direction: column;
+            color: white;
+            span {
+              font-size: 0.8rem;
+            }
+            a {
+              color: white;
+              text-decoration: none;
+              font-weight: 900;
+            }
+          }
+        }
+
+        .date {
+          color: white;
+          font-size: 1.2rem;
+        }
+      }
+    }
+    #post-header-image {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      height: 70%;
+      width: 100%;
+      overflow: hidden;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(rgba(23, 22, 29, 0.6), rgba(23, 22, 29, 1));
+      }
+
+      > img {
+        object-fit: cover;
+        object-position: center center;
+        width: 100%;
+      }
     }
   }
 </style>
 
 <header>
-  <div>
-    <h1 class="primary">Titulo del post</h1>
+  <div id="post-header-image">
+    <img src={coverImageUrl} />
+  </div>
+  <div class="header">
+    <a id="back-button" class="back-button"><img src={arrowBack} /></a>
+    <h1>{data.title}</h1>
+    <div class="metadata">
+      <div class="author">
+        <div class="avatar">
+          <span>
+            {authorName[0]}
+          </span>
+        </div>
+        <div class="text">
+          <a href={`mailto:${authorEmail}`}>{authorName}</a>
+          <span>{authorTag}</span>
+        </div>
+      </div>
+      <div class="date">
+        Publicado el
+        {formatDate(data.date)}
+      </div>
+    </div>
   </div>
 </header>
+
+<script onload>
+  const backButton = document.getElementById("back-button");
+  backButton.addEventListener("click", function () {
+    history.go(-1);
+  });
+</script>
