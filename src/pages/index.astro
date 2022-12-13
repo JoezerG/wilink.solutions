@@ -47,7 +47,7 @@ const postsSorted = posts.sort(sortPostByDate);
     {
       postsSorted.map(({ url, frontmatter: { title, date } }) => {
         const type = url.includes("solutions") ? "Solucion" : "Articulo";
-        const coverImage = `/images${url}/cover_image.png`;
+        const coverImage = `/images${url}/cover_image.webp`;
         return (
           <div class="cover-post">
             <a href={url}>

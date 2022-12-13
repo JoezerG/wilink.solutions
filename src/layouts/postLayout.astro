@@ -13,7 +13,7 @@ type Props = MarkdownLayoutProps<{
 const props = Astro.props.frontmatter || Astro.props;
 
 const [authorName, authorEmail, authorTag] = props.author.split("|");
-const coverImageUrl = `/images${props.url}/cover_image_scaled.png`;
+const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
 ---
 
 <style lang="scss">
