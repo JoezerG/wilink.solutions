@@ -1,8 +1,10 @@
 ---
 import Navigation from "../components/navigation.astro";
+import "@fontsource/lato/400.css";
 import "@fontsource/lato/700.css";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
+import Footer from "../components/footer.astro";
 let { title } = Astro.props;
 ---
 
@@ -16,7 +18,7 @@ let { title } = Astro.props;
   </head>
 
   <body>
-    <style lang="scss" is:global>
+    <style is:global>
       :root {
         --max-width-container: 1200px;
         --primary-color: rgb(142, 90, 255);
@@ -47,36 +49,9 @@ let { title } = Astro.props;
         grid-template-rows: 1fr;
         gap: 210px;
       }
-      footer {
-        margin-top: 4rem;
-        background-color: rgba(255, 255, 255, 0.05);
-        > div {
-          max-width: var(--max-width-container);
-          width: 100%;
-          margin: 0 auto;
-          height: 70px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          font-family: "Montserrat", sans-serif;
-          a {
-            color: var(--primary-color);
-          }
-          p {
-            color: rgba(255, 255, 255, 0.5);
-          }
-        }
-      }
     </style>
     <Navigation />
     <slot />
-    <footer>
-      <div>
-        <p>©2022 WiLink Solutions. Todos los derechos reservados.</p>
-        <p>
-          made by <a target="_blank" href="https://joezerg.dev">joezerg.dev</a>
-        </p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>

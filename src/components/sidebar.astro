@@ -11,21 +11,32 @@ const categories = posts
   .filter(filterCategories);
 ---
 
-<style lang="scss">
+<style>
   aside {
     position: sticky;
-    .categories {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-    }
+  }
+  h2 {
+    color: white;
+    font-family: "Lato", sans-serif;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  a {
+    color: var(--primary-color);
+    font-family: "Lato", sans-serif;
+    border: 2px solid var(--primary-color);
+    padding: 0.5rem 1rem;
   }
 </style>
 
 <aside>
-  <h2 class="secondary">Categorías</h2>
-  <div class="categories">
+  <h2>Categorías</h2>
+  <div>
     {categories.map((link) => <a class="button outlined">{link}</a>)}
   </div>
 </aside>

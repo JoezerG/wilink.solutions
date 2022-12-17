@@ -13,39 +13,37 @@ const props = Astro.props.frontmatter || Astro.props;
 const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
 ---
 
-<style lang="scss">
+<style>
   main {
     position: relative;
     z-index: 4;
+  }
 
-    .header_image {
-      margin-bottom: 5rem;
-      position: relative;
+  .body-post {
+    color: white;
+    font-family: "Lato", sans-serif;
+  }
 
-      &::after {
-        content: "Imagen generada por Stable Difusion";
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        text-shadow: 2px 2px 2px rgba(23, 22, 29, 0.6);
-        color: rgba(255, 255, 255, 0.7);
-      }
-      img {
-        display: block;
-        width: 100%;
-        border-radius: 12px;
-        border: 2px var(--primary-color) solid;
-        box-sizing: border-box;
-      }
-    }
+  .body-post h2 {
+    background-color: red;
+  }
 
-    .body-post {
-      color: white;
+  .header_image {
+    margin-bottom: 5rem;
+  }
+  .header_image small {
+    display: block;
+    color: white;
+    font-family: "Lato", sans-serif;
+    text-align: right;
+    margin-top: 0.5rem;
+  }
 
-      h2 {
-        background-color: red;
-      }
-    }
+  .header_image > img {
+    display: block;
+    width: 100%;
+    border: 2px var(--primary-color) solid;
+    box-sizing: border-box;
   }
 </style>
 
@@ -58,6 +56,7 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
           srcset={coverImageUrl}
           alt={`${props.title}. Imagen generada por Stable Difusion`}
         />
+        <small>Imagen generada por Stable Difusion</small>
       </div>
       <div class="body-post">
         <slot />

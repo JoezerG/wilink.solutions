@@ -5,69 +5,70 @@ let { data } = Astro.props;
 const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
 ---
 
-<style lang="scss">
+<style>
   header {
     max-width: var(--max-width-container);
     width: 100%;
     margin: 0 auto;
-    .header {
-      width: 100%;
-      max-width: 720px;
-      position: relative;
-      min-height: 400px;
-      display: flex;
-      flex-direction: column;
-      justify-items: center;
-      justify-content: center;
-      z-index: 2;
+  }
+  .post-header-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    height: 70%;
+    width: 100%;
+    overflow: hidden;
+  }
 
-      .back-button {
-        display: block;
-        width: 44px;
-        height: 44px;
-        background-color: rgba(135, 86, 238, 0.59);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 3px;
-        cursor: pointer;
-      }
+  .post-header-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(rgba(23, 22, 29, 0.6), rgba(23, 22, 29, 1));
+  }
 
-      h1 {
-        color: var(--primary-color);
-        font-size: 45px;
-        font-weight: 700;
-      }
-    }
-    #post-header-image {
-      position: absolute;
-      left: 0;
-      top: 0;
-      z-index: 1;
-      height: 70%;
-      width: 100%;
-      overflow: hidden;
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        height: 100%;
-        width: 100%;
-        background: linear-gradient(rgba(23, 22, 29, 0.6), rgba(23, 22, 29, 1));
-      }
+  .post-header-image > img {
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+  }
+  .back-button {
+    display: block;
+    width: 44px;
+    height: 44px;
+    background-color: rgba(135, 86, 238, 0.59);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .header {
+    width: 100%;
+    max-width: 720px;
+    position: relative;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    z-index: 2;
+  }
 
-      > img {
-        object-fit: cover;
-        object-position: center center;
-        width: 100%;
-      }
-    }
+  h1 {
+    color: var(--primary-color);
+    font-size: 45px;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
   }
 </style>
 
 <header>
-  <div id="post-header-image">
-    <img srcset={coverImageUrl} />
+  <div class="post-header-image">
+    <img src={coverImageUrl} />
   </div>
   <div class="header">
     <a id="back-button" class="back-button"><img src={arrowBack} /></a>

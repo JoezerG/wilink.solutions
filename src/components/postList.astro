@@ -5,14 +5,21 @@ let { posts } = Astro.props;
 ---
 
 <style>
-  h2 {
-    transition: all 0.1s ease-in-out;
+  .info a {
     display: inline-block;
-    padding-right: 20px;
     color: var(--primary-color);
     font-family: "Montserrat", sans-serif;
+    font-weight: 700;
     font-size: 45px;
+    margin: 25px 0px;
+    text-decoration: none;
   }
+
+  .info a:hover {
+    width: 100%;
+    text-decoration: underline;
+  }
+
   .cover-post {
     height: 220px;
     overflow: hidden;
@@ -37,9 +44,7 @@ let { posts } = Astro.props;
           </a>
         </div>
         <div class="info">
-          <a href={url}>
-            <h2 class="primary">{title}</h2>
-          </a>
+          <a href={url}>{title}</a>
         </div>
         <Author date={date} author={author} />
       </article>
