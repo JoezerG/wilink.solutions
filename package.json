@@ -11,8 +11,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@fontsource/lato": "^4.5.10",
     "@fontsource/montserrat": "^4.5.13",
-    "@fontsource/roboto": "^4.5.8",
     "astro": "^1.6.0",
     "luxon": "^3.1.1"
   },
