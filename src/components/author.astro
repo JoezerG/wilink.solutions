@@ -1,0 +1,75 @@
+---
+import { formatDate } from "../utils/commons";
+
+let { author, date } = Astro.props;
+const [authorName, authorEmail, authorTag] = author.split("|");
+---
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+  }
+  .author {
+    display: flex;
+    gap: 10px;
+  }
+
+  .avatar > span {
+    display: block;
+    width: 37px;
+    height: 37px;
+    background-color: #a3ff8c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 3px;
+    color: var(--body-background);
+  }
+
+  .avatar .text {
+    display: flex;
+    flex-direction: column;
+    color: white;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  p {
+    color: white;
+    margin: 0;
+  }
+
+  .avatar .date {
+    color: white;
+    font-size: 1.2rem;
+  }
+</style>
+
+<div class="container">
+  <div class="author">
+    <div class="avatar">
+      <span>
+        {authorName[0]}
+      </span>
+    </div>
+    <div class="text">
+      <a href={`mailto:${authorEmail}`}>{authorName}</a>
+      <p>{authorTag}</p>
+    </div>
+  </div>
+  <div class="date">
+    Publicado el
+    {formatDate(date)}
+  </div>
+</div>

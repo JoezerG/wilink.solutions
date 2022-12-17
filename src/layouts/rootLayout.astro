@@ -1,7 +1,8 @@
 ---
 import Navigation from "../components/navigation.astro";
-import "../styles/globals.scss";
-import "@fontsource/roboto";
+import "@fontsource/lato/700.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/700.css";
 let { title } = Astro.props;
 ---
 
@@ -16,8 +17,26 @@ let { title } = Astro.props;
 
   <body>
     <style lang="scss" is:global>
+      :root {
+        --max-width-container: 1200px;
+        --primary-color: rgb(142, 90, 255);
+        --navbar-background: rgba(14, 13, 17, 0.8);
+        --body-background: rgb(23, 22, 29);
+      }
+
       body {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
         background-color: var(--body-background);
+      }
+
+      h1 {
+        font-size: 45px;
+      }
+
+      h2 {
+        font-size: 32px;
       }
       main {
         max-width: var(--max-width-container);
@@ -29,10 +48,9 @@ let { title } = Astro.props;
         gap: 210px;
       }
       footer {
-        color: white;
         margin-top: 4rem;
+        background-color: rgba(255, 255, 255, 0.05);
         > div {
-          border-top: 1px solid rgba(255, 255, 255, 0.3);
           max-width: var(--max-width-container);
           width: 100%;
           margin: 0 auto;
@@ -40,8 +58,12 @@ let { title } = Astro.props;
           display: flex;
           align-items: center;
           justify-content: space-between;
+          font-family: "Montserrat", sans-serif;
           a {
             color: var(--primary-color);
+          }
+          p {
+            color: rgba(255, 255, 255, 0.5);
           }
         }
       }
@@ -50,7 +72,7 @@ let { title } = Astro.props;
     <slot />
     <footer>
       <div>
-        <p>WiLink Solutions 2022</p>
+        <p>©2022 WiLink Solutions. Todos los derechos reservados.</p>
         <p>
           made by <a target="_blank" href="https://joezerg.dev">joezerg.dev</a>
         </p>

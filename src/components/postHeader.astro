@@ -1,8 +1,7 @@
 ---
 import arrowBack from "../images/arrow_back.svg";
-import { formatDate } from "../utils/commons";
+import Author from "./author.astro";
 let { data } = Astro.props;
-const [authorName, authorEmail, authorTag] = data.author.split("|");
 const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
 ---
 
@@ -37,51 +36,7 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
       h1 {
         color: var(--primary-color);
         font-size: 45px;
-        font-weight: 900;
-      }
-
-      .metadata {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-end;
-
-        .author {
-          display: flex;
-          gap: 10px;
-          .avatar {
-            > span {
-              display: block;
-              width: 37px;
-              height: 37px;
-              background-color: #a3ff8c;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-weight: bold;
-              text-transform: uppercase;
-              border-radius: 3px;
-            }
-          }
-          .text {
-            display: flex;
-            flex-direction: column;
-            color: white;
-            span {
-              font-size: 0.8rem;
-            }
-            a {
-              color: white;
-              text-decoration: none;
-              font-weight: 900;
-            }
-          }
-        }
-
-        .date {
-          color: white;
-          font-size: 1.2rem;
-        }
+        font-weight: 700;
       }
     }
     #post-header-image {
@@ -112,28 +67,12 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
 
 <header>
   <div id="post-header-image">
-    <img src={coverImageUrl} />
+    <img srcset={coverImageUrl} />
   </div>
   <div class="header">
     <a id="back-button" class="back-button"><img src={arrowBack} /></a>
     <h1>{data.title}</h1>
-    <div class="metadata">
-      <div class="author">
-        <div class="avatar">
-          <span>
-            {authorName[0]}
-          </span>
-        </div>
-        <div class="text">
-          <a href={`mailto:${authorEmail}`}>{authorName}</a>
-          <span>{authorTag}</span>
-        </div>
-      </div>
-      <div class="date">
-        Publicado el
-        {formatDate(data.date)}
-      </div>
-    </div>
+    <Author date={data.date} author={data.author} />
   </div>
 </header>
 

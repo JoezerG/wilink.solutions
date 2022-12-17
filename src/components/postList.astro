@@ -1,0 +1,48 @@
+---
+import Author from "./author.astro";
+
+let { posts } = Astro.props;
+---
+
+<style>
+  h2 {
+    transition: all 0.1s ease-in-out;
+    display: inline-block;
+    padding-right: 20px;
+    color: var(--primary-color);
+    font-family: "Montserrat", sans-serif;
+    font-size: 45px;
+  }
+  .cover-post {
+    height: 220px;
+    overflow: hidden;
+    border: 2px solid var(--primary-color);
+  }
+
+  img {
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+  }
+</style>
+
+{
+  posts.map(({ url, frontmatter: { title, date, author } }) => {
+    const coverImage = `/images${url}/cover_image.webp`;
+    return (
+      <article>
+        <div class="cover-post">
+          <a href={url}>
+            <img srcset={coverImage} alt={title} />
+          </a>
+        </div>
+        <div class="info">
+          <a href={url}>
+            <h2 class="primary">{title}</h2>
+          </a>
+        </div>
+        <Author date={date} author={author} />
+      </article>
+    );
+  })
+}

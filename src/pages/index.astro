@@ -1,70 +1,16 @@
 ---
+import PostList from "../components/postList.astro";
+import PostListTitle from "../components/postListTitle.astro";
 import HomeLayout from "../layouts/homeLayout.astro";
-import { sortPostByDate, formatDate } from "../utils/commons";
+import { sortPostByDate } from "../utils/commons";
 import type { PostMetada } from "../utils/interfaces";
 const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
 const postsSorted = posts.sort(sortPostByDate);
 ---
 
-<style lang="scss">
-  .cover-post {
-    img {
-      max-width: 420px;
-      border-radius: 12px;
-      border: 2px var(--primary-color) solid;
-      box-sizing: border-box;
-    }
-  }
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-      text-decoration-color: var(--primary-color);
-    }
-  }
-  small {
-    font-size: 1.8rem;
-    color: white;
-    display: block;
-  }
-
-  .tags {
-    margin-top: 20px;
-    span {
-      padding: 0.3rem 0.8rem;
-      background-color: var(--primary-color);
-      border-radius: 4px;
-      color: white;
-    }
-  }
-</style>
-
 <HomeLayout>
-  <div class="section-title line">
-    <h2 class="secondary">Últimas entradas</h2>
-  </div>
+  <PostListTitle />
   <section>
-    {
-      postsSorted.map(({ url, frontmatter: { title, date } }) => {
-        const type = url.includes("solutions") ? "Solucion" : "Articulo";
-        const coverImage = `/images${url}/cover_image.webp`;
-        return (
-          <div class="cover-post">
-            <a href={url}>
-              <img src={coverImage} alt={title} />
-              </a>
-            </div>
-            <div>
-              <a href={url}>
-                <h2 class="primary">{title}</h2>
-              </a>
-            </div>
-            <small>{formatDate(date)}</small>
-            <div class="tags">
-              <span>{type}</span>
-            </div>
-        );
-      })
-    }
+    <PostList posts={postsSorted} />
   </section>
 </HomeLayout>
