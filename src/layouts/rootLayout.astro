@@ -27,6 +27,7 @@ let { title } = Astro.props;
         --primary-color: rgb(142, 90, 255);
         --navbar-background: rgba(14, 13, 17, 0.8);
         --body-background: rgb(23, 22, 29);
+        --tablet-width-break: 600px;
       }
 
       body {
@@ -49,8 +50,15 @@ let { title } = Astro.props;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 720px 1fr;
-        grid-template-rows: 1fr;
-        gap: 210px;
+        gap: 10rem;
+      }
+
+      @media (max-width: 1080px) {
+        main {
+          box-sizing: border-box;
+          grid-template-columns: 1fr;
+          padding: 0px 2rem;
+        }
       }
     </style>
     <Navigation />

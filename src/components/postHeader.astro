@@ -11,6 +11,7 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
     width: 100%;
     margin: 0 auto;
   }
+
   .post-header-image {
     position: absolute;
     left: 0;
@@ -35,6 +36,7 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
     object-position: center center;
     width: 100%;
   }
+
   .back-button {
     display: block;
     width: 44px;
@@ -63,6 +65,17 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
     font-size: 45px;
     font-weight: 700;
     font-family: "Montserrat", sans-serif;
+  }
+
+  @media (max-width: 1080px) {
+    header {
+      box-sizing: border-box;
+      padding: 0 2rem;
+    }
+
+    .post-header-image > img {
+      width: max-content;
+    }
   }
 </style>
 

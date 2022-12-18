@@ -4,7 +4,6 @@ import bgImage from "../images/bg_home_header.webp";
 
 <style>
   h1 {
-    padding: 1em 2rem;
     font-family: "Montserrat", sans-serif;
     color: var(--primary-color);
     font-weight: 700;
@@ -15,8 +14,14 @@ import bgImage from "../images/bg_home_header.webp";
     margin: 0 auto;
     display: grid;
     grid-template-columns: 550px 1fr;
-    grid-template-rows: 1fr;
-    height: 600px;
+    gap: 3rem;
+  }
+  @media (max-width: 1080px) {
+    header {
+      box-sizing: border-box;
+      grid-template-columns: 1fr;
+      padding: 0px 2rem;
+    }
   }
 
   header > div {
