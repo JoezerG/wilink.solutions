@@ -5,12 +5,14 @@ import "@fontsource/lato/700.css";
 import "@fontsource/montserrat/400.css";
 import "@fontsource/montserrat/700.css";
 import Footer from "../components/footer.astro";
+import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 let { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <GoogleAnalytics />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
