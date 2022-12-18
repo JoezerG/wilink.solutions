@@ -6,6 +6,8 @@ tags: Hello
 layout: ../../layouts/postLayout.astro
 ---
 
-## Me presento!
+### Me presento!
 
-Hola! que tal? Mi nombre es Joezer (yoser) Gullo, soy desarrollador full stack hacer 10 anos
+Hola! que tal? Mi nombre es Joezer **(yoser)** Gullo, soy [desarrollador](https://joezerg.dev) full stack hace 10 anos.
+
+![foto](/images/articles/hello-world/cover_image_scaled.webp)

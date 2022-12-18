@@ -24,12 +24,8 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
     font-family: "Lato", sans-serif;
   }
 
-  .body-post h2 {
-    background-color: red;
-  }
-
   .header_image {
-    margin-bottom: 5rem;
+    margin-bottom: 2rem;
   }
   .header_image small {
     display: block;
@@ -47,6 +43,37 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
   }
 </style>
 
+<style lang="scss" is:global>
+  #body-post {
+    font-family: "Lato", sans-serif;
+
+    h3 {
+      font-size: 1.7rem;
+      color: white;
+      line-height: 1.5;
+      font-weight: 700;
+    }
+
+    a {
+      color: var(--primary-color);
+    }
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: white;
+
+      > strong {
+        color: var(--primary-color);
+      }
+    }
+  }
+</style>
+
 <RootLayout title={props.title}>
   <PostHeader data={props} />
   <main>
@@ -58,7 +85,7 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
         />
         <small>Imagen generada por Stable Difusion</small>
       </div>
-      <div class="body-post">
+      <div id="body-post">
         <slot />
       </div>
     </div>
