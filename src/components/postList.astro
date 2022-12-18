@@ -5,6 +5,16 @@ let { posts } = Astro.props;
 ---
 
 <style>
+  article {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    transition: border-color 0.2s ease;
+    padding-bottom: 3rem;
+  }
+
+  article:hover {
+    border-color: rgba(255, 255, 255, 1);
+  }
+
   .info a {
     display: inline-block;
     color: var(--primary-color);
@@ -23,7 +33,8 @@ let { posts } = Astro.props;
   .cover-post {
     height: 220px;
     overflow: hidden;
-    border: 2px solid var(--primary-color);
+    border: 1px inset solid var(--primary-color);
+    box-sizing: border-box;
   }
 
   img {
