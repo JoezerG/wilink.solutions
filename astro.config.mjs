@@ -5,4 +5,10 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   site: "https://wilink.solutions",
   integrations: [sitemap(), partytown()],
+  markdown: {
+    shikiConfig: {
+      theme: "dracula-soft",
+      wrap: true,
+    },
+  },
 });
