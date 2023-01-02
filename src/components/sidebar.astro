@@ -7,7 +7,8 @@ function filterCategories(category: string, index: number, self: string[]) {
 
 const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
 const categories = posts
-  .map((p) => p.frontmatter.tags)
+  .map((p) => p.frontmatter.tags.split(","))
+  .flat()
   .filter(filterCategories);
 ---
 
