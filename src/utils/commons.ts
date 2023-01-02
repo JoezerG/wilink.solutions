@@ -13,5 +13,6 @@ export const sortPostByDate = (
 
 export const formatDate = (date: string) => {
   const _date = new Date(date);
-  return new Intl.DateTimeFormat("es", { dateStyle: "medium" }).format(_date);
+  const formated = new Intl.DateTimeFormat("es", { dateStyle: "medium" });
+  return formated.format(_date);
 };
