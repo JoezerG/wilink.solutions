@@ -1,0 +1,17 @@
+---
+import Sidebar from "../components/sidebar.astro";
+import TagHeader from "../components/tagHeader.astro";
+import RootLayout from "./rootLayout.astro";
+
+const { title } = Astro.props;
+---
+
+<RootLayout>
+  <TagHeader tag={title} />
+  <main>
+    <div>
+      <slot />
+    </div>
+    <Sidebar />
+  </main>
+</RootLayout>
