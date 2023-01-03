@@ -6,10 +6,12 @@ tags: Hello
 layout: ../../layouts/postLayout.astro
 ---
 
-## Me presento!
+## Presentando a Joezer Gullo y Wilink Solutions Blog
 
-**Hola!** ¿qué tal? Mi nombre es [Joezer **(yoser)** Gullo](https://joezerg.dev), desarrollador full stack según la clasificación de RRHH 😅, lo que quiere decir que puedo desarrollador programar y soluciones del lado del servidor y como de cara a el usuario. A fin de todo me gusta mejorar experiencias, reducir barreras de utilización y optimizar procesos.
+¡Hola a todos! Mi nombre es Joezer Gullo y soy un desarrollador full stack con experiencia en crear soluciones tanto del lado del servidor como del lado del usuario. Me gusta mejorar la experiencia del usuario, reducir barreras de uso y optimizar procesos.
 
-## Wilink Solutions
+Este blog es una forma de documentar parte de mi proceso de aprendizaje y compartir mis conocimientos con la comunidad. Muchos desarrolladores, como yo, somos en gran parte autodidactas y trabajamos con profesionales altamente experimentados en diferentes áreas. A menudo encontramos que hay una gran brecha de información para aquellos desarrolladores que ya no son principiantes, pero que también no son especialistas en un área específica. Como "one man team" que somos, nos toca hacer tanto frontend como backend y devops, y cada vez más es importante tener conocimientos en todas estas áreas para poder ser brindadores de soluciones completos.
 
-Parte de mi proceso de aprendizaje, como el de muchos en esta area del desarrollo, ha sido en gran parte autodidacta complementado de la mano de algunos profesionales con mucha experiencia en diferentes nichos siendo parte de proyectos freelance o empresas donde el rose con personas con experiencia alimentan las ganas de seguir aprediendo, no solo de la programación, sino también del lado del negocio, pudiendo notar una enorme brecha de información para nosotros, los desarrolladores que ya no somos junior, pero que tampoco somos tan especialistas en un área como tal, los mal llamados “one man team”, nos toca hacer front, backend, devops
+En este blog, también estoy abriendo la oportunidad para que otras personas colaboren con posts y soluciones de procesos poco documentados en internet. A menudo tenemos que aprender por ensayo y error, y documentar esos procesos puede ayudar a la comunidad a crear soluciones mejores.
+
+¡Espero que hayas disfrutado aprendiendo un poco más sobre mí y mi trabajo! Si tienes alguna pregunta o simplemente quieres conectarnos, no dudes en contactarme a través de mi sitio web en [joezerg.dev](https://joezerg.dev). ¡Hasta la próxima!
