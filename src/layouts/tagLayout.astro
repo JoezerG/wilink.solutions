@@ -6,7 +6,7 @@ import RootLayout from "./rootLayout.astro";
 const { title } = Astro.props;
 ---
 
-<RootLayout>
+<RootLayout title={`#${title}`}>
   <TagHeader tag={title} />
   <main>
     <div>
