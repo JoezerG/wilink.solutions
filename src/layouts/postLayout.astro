@@ -8,6 +8,7 @@ type Props = MarkdownLayoutProps<{
   author: string;
   date: string;
   cover: string;
+  description: string;
 }>;
 const props = Astro.props.frontmatter || Astro.props;
 const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
@@ -74,10 +75,18 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
       padding: 1rem;
       border: 1px solid var(--primary-color);
     }
+
+    ol {
+    }
+
+    ol > li {
+      color: white;
+      font-size: 1.5rem;
+    }
   }
 </style>
 
-<RootLayout title={props.title}>
+<RootLayout url={props.url}>
   <PostHeader data={props} />
   <main>
     <div>

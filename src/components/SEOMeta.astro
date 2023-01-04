@@ -1,0 +1,28 @@
+---
+import { authors, defaultMT } from "../utils/constans";
+
+const { url } = Astro.props;
+const posts = await Astro.glob("../pages/**/*.md");
+const postData = posts.find((p) => p.url.includes(url));
+const {
+  title,
+  description,
+  author,
+  url: postUrl,
+} = postData ? postData.frontmatter : defaultMT;
+const authorData = authors[author];
+---
+
+<meta
+  name="keywords"
+  content="tutoriales, web development, soluciones, blog, desarrollo"
+/>
+<meta property="og:title" content={title} />
+<meta
+  property="og:url"
+  content={`https://wilink.solutions${postUrl ? postUrl : ""}`}
+/>
+<meta property="og:description" content={description} />
+<meta property="og:type" content="article" />
+<meta property="twitter:site" content="@wilink.solutions" />
+<meta property="twitter:creator" content={authorData.twitter} />

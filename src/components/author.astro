@@ -1,5 +1,6 @@
 ---
 import { formatDate } from "../utils/commons";
+import { authors } from "../utils/constans";
 
 type Props = {
   author: string;
@@ -7,7 +8,7 @@ type Props = {
 };
 
 let { author, date } = Astro.props;
-const [authorName, authorEmail, authorTag] = author.split("|");
+const { user, email, tag } = authors[author];
 ---
 
 <style>
@@ -65,12 +66,12 @@ const [authorName, authorEmail, authorTag] = author.split("|");
   <div class="author">
     <div class="avatar">
       <span>
-        {authorName[0]}
+        {user[0]}
       </span>
     </div>
     <div class="text">
-      <a href={`mailto:${authorEmail}`}>{authorName}</a>
-      <p>{authorTag}</p>
+      <a href={`mailto:${email}`}>{user}</a>
+      <p>{tag}</p>
     </div>
   </div>
   <div class="date">
