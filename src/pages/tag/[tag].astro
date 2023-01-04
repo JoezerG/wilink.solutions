@@ -1,0 +1,35 @@
+---
+import PostList from "../../components/postList.astro";
+import TagHeader from "../../components/tagHeader.astro";
+import TagLayout from "../../layouts/tagLayout.astro";
+import {
+  filterCategories,
+  filterPostByTag,
+  sortPostByDate,
+} from "../../utils/commons";
+import { PostMetada } from "../../utils/interfaces";
+const posts = await Astro.glob<PostMetada>("../../pages/**/*.md");
+const { tag } = Astro.params;
+const postsSorted = posts
+  .filter((p) => filterPostByTag(p, `${tag}`))
+  .sort(sortPostByDate);
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob<PostMetada>("../../pages/**/*.md");
+  const categories = posts
+    .map((p) => p.frontmatter.tags.split(","))
+    .flat()
+    .filter(filterCategories);
+  return categories.map((c) => {
+    return {
+      params: { tag: c.toLocaleLowerCase() },
+    };
+  });
+}
+---
+
+<TagLayout title={tag}>
+  <section>
+    <PostList posts={postsSorted} />
+  </section>
+</TagLayout>

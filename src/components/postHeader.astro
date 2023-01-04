@@ -1,6 +1,10 @@
 ---
+import { MarkdownInstance } from "astro";
 import arrowBack from "../images/arrow_back.svg";
+import { PostMetada } from "../utils/interfaces";
 import Author from "./author.astro";
+import PostTags from "./postTags.astro";
+
 let { data } = Astro.props;
 const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
 ---
@@ -61,8 +65,8 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
   }
 
   h1 {
-    color: var(--primary-color);
-    font-size: 45px;
+    color: white;
+    font-size: 3rem;
     font-weight: 700;
     font-family: "Montserrat", sans-serif;
   }
@@ -87,6 +91,7 @@ const coverImageUrl = `/images${data.url}/cover_image_scaled.webp`;
     <a id="back-button" class="back-button"><img src={arrowBack} /></a>
     <h1>{data.title}</h1>
     <Author date={data.date} author={data.author} />
+    <PostTags tags={data.tags.split(",")} />
   </div>
 </header>
 

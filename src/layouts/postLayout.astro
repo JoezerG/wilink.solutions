@@ -8,6 +8,7 @@ type Props = MarkdownLayoutProps<{
   author: string;
   date: string;
   cover: string;
+  description: string;
 }>;
 const props = Astro.props.frontmatter || Astro.props;
 const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
@@ -47,15 +48,10 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
   #body-post {
     font-family: "Lato", sans-serif;
 
-    h3 {
+    h2 {
       font-size: 1.7rem;
       color: white;
-      line-height: 1.5;
       font-weight: 700;
-    }
-
-    a {
-      color: var(--primary-color);
     }
 
     img {
@@ -66,8 +62,11 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
     p {
       font-size: 1.2rem;
       color: white;
+      line-height: 1.8;
+      margin-bottom: 2rem;
 
-      > strong {
+      > strong,
+      a {
         color: var(--primary-color);
       }
     }
@@ -76,10 +75,18 @@ const coverImageUrl = `/images${props.url}/cover_image_scaled.webp`;
       padding: 1rem;
       border: 1px solid var(--primary-color);
     }
+
+    ol {
+    }
+
+    ol > li {
+      color: white;
+      font-size: 1.5rem;
+    }
   }
 </style>
 
-<RootLayout title={props.title}>
+<RootLayout url={props.url}>
   <PostHeader data={props} />
   <main>
     <div>

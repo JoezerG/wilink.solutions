@@ -1,0 +1,33 @@
+---
+const { tag } = Astro.props;
+---
+
+<style>
+  h1 {
+    font-family: "Montserrat", sans-serif;
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+  header {
+    max-width: var(--max-width-container);
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    min-height: 180px;
+    display: grid;
+    align-items: center;
+  }
+  @media (max-width: 1080px) {
+    header {
+      box-sizing: border-box;
+      grid-template-columns: 1fr;
+      padding: 2rem;
+    }
+  }
+</style>
+
+<header>
+  <div class="text">
+    <h1>#{tag}</h1>
+  </div>
+</header>

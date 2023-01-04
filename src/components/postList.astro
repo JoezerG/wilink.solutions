@@ -1,5 +1,12 @@
 ---
+import { MarkdownInstance } from "astro";
+import { PostMetada } from "../utils/interfaces";
 import Author from "./author.astro";
+import PostTags from "./postTags.astro";
+
+type Props = {
+  posts: MarkdownInstance<PostMetada>[];
+};
 
 let { posts } = Astro.props;
 ---
@@ -8,7 +15,7 @@ let { posts } = Astro.props;
   article {
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: border-color 0.2s ease;
-    padding-bottom: 3rem;
+    margin-bottom: 2rem;
   }
 
   article:hover {
@@ -46,7 +53,7 @@ let { posts } = Astro.props;
 </style>
 
 {
-  posts.map(({ url, frontmatter: { title, date, author } }) => {
+  posts.map(({ url, frontmatter: { title, date, author, tags } }) => {
     const coverImage = `/images${url}/cover_image.webp`;
     return (
       <article>
@@ -59,6 +66,7 @@ let { posts } = Astro.props;
           <a href={url}>{title}</a>
         </div>
         <Author date={date} author={author} />
+        <PostTags tags={tags.split(",")} />
       </article>
     );
   })

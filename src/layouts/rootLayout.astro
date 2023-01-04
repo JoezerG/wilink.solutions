@@ -7,7 +7,8 @@ import "@fontsource/montserrat/700.css";
 import Footer from "../components/footer.astro";
 import GoogleAnalytics from "../components/GoogleAnalytics.astro";
 import GoogleAdsense from "../components/GoogleAdsense.astro";
-let { title } = Astro.props;
+import SEOMeta from "../components/SEOMeta.astro";
+const { title, url } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@ let { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title && `${title} |`} WiLink Solutions</title>
     <link rel="icon" type="image/x-icon" href="/favicon.svg" />
+    <SEOMeta {...{url}} />
   </head>
 
   <body>
@@ -48,7 +50,7 @@ let { title } = Astro.props;
       }
       main {
         max-width: var(--max-width-container);
-        width: 100%;
+        width: 95%;
         margin: 0 auto;
         display: grid;
         grid-template-columns: 720px 1fr;

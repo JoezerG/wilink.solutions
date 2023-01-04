@@ -1,13 +1,11 @@
 ---
+import { filterCategories } from "../utils/commons";
 import { PostMetada } from "../utils/interfaces";
-
-function filterCategories(category: string, index: number, self: string[]) {
-  return self.indexOf(category) === index;
-}
 
 const posts = await Astro.glob<PostMetada>("../pages/**/*.md");
 const categories = posts
-  .map((p) => p.frontmatter.tags)
+  .map((p) => p.frontmatter.tags.split(","))
+  .flat()
   .filter(filterCategories);
 ---
 
@@ -41,6 +39,7 @@ const categories = posts
     cursor: pointer;
     transition: all 0.2s ease;
     background-color: transparent;
+    text-decoration: none;
   }
 
   a:hover {
@@ -53,6 +52,12 @@ const categories = posts
 <aside>
   <h2>Categorías</h2>
   <div>
-    {categories.map((link) => <a class="button outlined">{link}</a>)}
+    {
+      categories.map((tag) => (
+        <a href={`/tag/${tag.toLowerCase()}`} class="button outlined">
+          #{tag}
+        </a>
+      ))
+    }
   </div>
 </aside>
