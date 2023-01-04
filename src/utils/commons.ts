@@ -32,3 +32,10 @@ export function filterCategories(
 ) {
   return self.indexOf(category) === index;
 }
+
+export function calculateTimeToRead(text: string) {
+  const words = text.split(" ");
+  const PPM = 155;
+  const timeToRead = (words.length / PPM).toFixed(0);
+  return timeToRead;
+}
