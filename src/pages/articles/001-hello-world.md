@@ -1,7 +1,7 @@
 ---
 title: Hola mundo!
 date: "2022/12/09"
-author: JoezerG|joezergullo@gmail.com|Full Stack Developer
+author: joezerg
 tags: Hello
 layout: ../../layouts/postLayout.astro
 ---
